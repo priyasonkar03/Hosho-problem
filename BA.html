@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Business Analyst</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form name="google-sheet" name="sheetName"  for="sheetName">
+    <div class="button-container">
+      <a href="Dev.html" target="_self" class="button">Developer</a>
+      <a href="BA.html" target="_parent"class="button"><select name="sheetName" id=""><option value="BA">Business Analyst</option></select></a>
+      <a href="DA.html" target="_self" class="button">Data Analyst</a>
+    </div>
+    
+    <label for="name">Name:</label>
+    <input type="text" name="Name">
+    <label for="email">Email:</label>
+    <input type="email" name="Email">
+    <label for="mobile">Mobile:</label>
+    <input type="text" name="Mobile">
+    <label for="teams">Teams:</label>
+    <input type="text" name="Teams" id="teams" placeholder="Business Analyst">
+    
+    <button type="submit">Submit</button>
+    
+    <button style="margin-top: 20px;"><a href="https://docs.google.com/spreadsheets/d/1xOXCKVWXH2-XYDCDVKaIoTyXco7aGy-6L08inGy5ukU/export?format=pdf&gid=833870092#gid" style="color: #fff; text-decoration: none;">Export to pdf</a></button>
+  </form>
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbznltJRYFnJQK6aIjlbcAqJrZU_rh4v-JNovc0HFJicTkCYb4IEgqXUkrOAlcb1BY26/exec";
+    const form = document.forms['google-sheet'];
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => alert("Thanks for Contacting us..! We will contact You soon..."))
+        .catch(error => console.error('Error!', error.message));
+    });
+  </script>
+</body>
+</html>
